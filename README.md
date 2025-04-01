@@ -1,2 +1,16 @@
 # eeob563_final_project
-This is the repository I will use for the EEOB 5630 final project.
+## Introduction
+The Andropogoneae tribe of grasses contains many important crops such as corn, sorghum, and sugar cane, so it is a widely studied group of grasses. Recently, a study was published that was the first to reconstruct the phylogeny of the entire grass family (Poaceae) using 353 gene regions (Grass Phylogeny Working Group III, 2025). However, they only created a species tree through a singular coalescent method and assumed GTR-CAT as the best model fit for all genes. Evidence was also found for gene flow between subtribes within Andropogoneae, as shown through a phylogenetic network. This lack of exploration of better supported tree and model fit, as well as evidence of gene flow, inspires this further study into determining the best-fitting topology of the Andropogoneae phylogeny and use it to trace the evolutionary history of the life history of the species, which is an important trait in agricultural research.
+
+## Main Questions
+1.	Will selecting the best model for each gene through IQ Tree’s ModelFinder result in a higher support values or a different topology for Andropogoneae from what is shown in the study?
+2.	How does the topology change across trees using coalescent (Astral-Pro) and concatenation (maximum likelihood through IQ-Tree) methods of creating a species tree?
+3.	How does the trait of life history (annual vs perennial) vary throughout the evolutionary history of Andropogoneae?
+   
+## Proposed Methods
+Using the raw data (described below), I will create a new set of files consisting only of species in the tribe Andropogoneae and a few species in a closely related tribe as an outgroup. I plan to follow the same general methods of the paper: using MAFFT to align sequences for each gene, TrimAl to remove short sequences or sites with too much missing data and filter out species missing over 50% of gene sequences. Then, gene trees will be created using the ModelFinder in IQ-Tree2 to find the best model for each gene. Abnormally long branches will be detected with TreeShrink, and corresponding sequences will be removed from the alignments. These files will be realigned and a final set of gene trees will be created using the methods described above. The final gene trees will be used to create a species tree through Astral-Pro3. The final set of alignments will also be combined into a supermatrix that will be used in IQ-Tree (using ModelFinder for each partition). BayesTraits will be used to determine the ancestral states of life history (annual or perennial) for the internal nodes of the tree.
+
+## Source of Data:
+Data from the study is provided through the Zenodo repository (https://zenodo.org/records/13778480). The raw sequences I will be using are provided as a FASTA file for each gene of the 353 gene regions and contain sequences for species throughout the plant family Poaceae. Life histories of each species are available through database Plants of the World Online (Kew).
+
+Grass Phylogeny Working Group III, Arthan, W., Baker, W. J., Barrett, M. D., Barrett, R. L., Bennetzen, J. L., ... & Zuntini, A. R. (2025). A nuclear phylogenomic tree of grasses (Poaceae) recovers current classification despite gene tree incongruence. New Phytologist, 245(2), 818-834.
